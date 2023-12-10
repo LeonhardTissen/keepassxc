@@ -89,7 +89,8 @@ void TestGui::initTestCase()
 {
     QVERIFY(Crypto::init());
     Config::createTempFileInstance();
-    Application::bootstrap();
+    Application::bootstrap("en_US");
+    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
 
     m_mainWindow.reset(new MainWindow());
     m_tabWidget = m_mainWindow->findChild<DatabaseTabWidget*>("tabWidget");

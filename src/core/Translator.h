@@ -19,11 +19,12 @@
 #define KEEPASSX_TRANSLATOR_H
 
 #include <QMetaType>
+#include <QString>
 
 class Translator
 {
 public:
-    static void installTranslators();
+    static void installTranslators(const QString& overrideLang = {});
     static QList<QPair<QString, QString>> availableLanguages();
 
 private:

@@ -32,22 +32,26 @@
 /**
  * Install all KeePassXC and Qt translators.
  */
-void Translator::installTranslators()
+void Translator::installTranslators(const QString& overrideLang)
 {
     QStringList languages;
-    QString languageSetting = config()->get(Config::GUI_Language).toString();
-    if (languageSetting.isEmpty() || languageSetting == "system") {
-        // NOTE: this is a workaround for the terrible way Qt loads languages
-        // using the QLocale::uiLanguages() approach. Instead, we search each
-        // language and all country variants in order before moving to the next.
-        QLocale locale;
-        languages = locale.uiLanguages();
-    } else {
-        languages << languageSetting;
-    }
+    if (overrideLang.isEmpty()) {
+        QString languageSetting = config()->get(Config::GUI_Language).toString();
+        if (languageSetting.isEmpty() || languageSetting == "system") {
+            // NOTE: this is a workaround for the terrible way Qt loads languages
+            // using the QLocale::uiLanguages() approach. Instead, we search each
+            // language and all country variants in order before moving to the next.
+            QLocale locale;
+            languages = locale.uiLanguages();
+        } else {
+            languages << languageSetting;
+        }
+        // Always try to load english last
+        languages << "en_US";
 
-    // Always try to load english last
-    languages << "en_US";
+    } else {
+        languages << overrideLang;
+    }
 
     const auto path = resources()->dataPath("translations");
     installQtTranslator(languages, path);

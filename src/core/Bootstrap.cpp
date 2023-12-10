@@ -63,7 +63,7 @@ namespace Bootstrap
      * Perform early application bootstrapping that does not rely on a QApplication
      * being present.
      */
-    void bootstrap()
+    void bootstrap(const QString& overrideUiLang)
     {
 #ifdef QT_NO_DEBUG
         disableCoreDumps();
@@ -72,7 +72,7 @@ namespace Bootstrap
         setupSearchPaths();
         applyEarlyQNetworkAccessManagerWorkaround();
 
-        Translator::installTranslators();
+        Translator::installTranslators(overrideUiLang);
     }
 
     // LCOV_EXCL_START
