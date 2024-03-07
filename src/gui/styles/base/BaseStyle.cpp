@@ -284,7 +284,7 @@ namespace Phantom
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 10) && QT_VERSION < QT_VERSION_CHECK(5, 13, 0)                               \
     || QT_VERSION >= QT_VERSION_CHECK(5, 15, 1)
                 if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::MacOSBigSur) {
-                    return hack_isLightPalette(pal) ? QRgb(0xD4D4D4) : QRgb(0x2A2A2A);
+                    return hack_isLightPalette(pal) ? QRgb(0xD4D4D4) : QRgb(0x000000);
                 }
 #endif
                 return hack_isLightPalette(pal) ? QRgb(0xDD1D1D1) : QRgb(0x252525);
@@ -294,7 +294,7 @@ namespace Phantom
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 10) && QT_VERSION < QT_VERSION_CHECK(5, 13, 0)                               \
     || QT_VERSION >= QT_VERSION_CHECK(5, 15, 1)
                 if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::MacOSBigSur) {
-                    return hack_isLightPalette(pal) ? QRgb(0xF5F5F5) : QRgb(0x2D2D2D);
+                    return hack_isLightPalette(pal) ? QRgb(0xF5F5F5) : QRgb(0x000000);
                 }
 #endif
                 return hack_isLightPalette(pal) ? QRgb(0xF4F4F4) : QRgb(0x282828);
